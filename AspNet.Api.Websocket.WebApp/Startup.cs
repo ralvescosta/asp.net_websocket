@@ -28,6 +28,7 @@ namespace AspNet.Api.Websocket.WebApp
         {
 
             services.AddControllers();
+            services.AddSignalRCore();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AspNet.Api.Websocket.WebApp", Version = "v1" });
@@ -49,6 +50,8 @@ namespace AspNet.Api.Websocket.WebApp
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseWebSockets();
 
             app.UseEndpoints(endpoints =>
             {
